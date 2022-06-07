@@ -10,12 +10,19 @@ class ClassComponent extends React.Component {
 
   increase = () => this.setState({ count: this.state.count + 1 });
   decrease = () => this.setState({ count: this.state.count - 1 });
-  hello = () => this.setState({ say: "Hi" });
+  hello = () => this.setState({ say: "Component Did Mounted" });
 
   componentDidMount() {
     console.log("Class Comp Mounted 2");
     this.increase(); //component render olduktan sonra DidMount çalıştı ve sayacı bir arttırdı.
     this.hello(); //aynı şekilde render olduktan sonra burası doğuyor.
+    //sadece ilk oluşumda çalışır.
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Class Component Updated!!");
+    console.log(prevState.count); //bi önceki state değerini tutar.
+    prevState.count !== this.state.count &&
+      console.log("Class Component Updated!!"); //state değişince clg olan kısmı çalıştır komutu.
   }
 
   render() {
