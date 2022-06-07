@@ -24,6 +24,9 @@ class ClassComponent extends React.Component {
     prevState.count !== this.state.count &&
       console.log("Class Component Updated!!"); //state değişince clg olan kısmı çalıştır komutu.
   }
+  componentWillUnmount() {
+    console.log("Class Comp Will Unmount Bye Bye!");
+  }
 
   render() {
     console.log("Class Comp Rendered 1");
