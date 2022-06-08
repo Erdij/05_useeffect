@@ -12,7 +12,22 @@ import React, { useState, useEffect } from "react";
 
 const UseEffectComp = () => {
   const [count, setCount] = useState(0);
-  const [age, setAge] = useState(4);
+  const [age, setAge] = useState(18);
+
+  useEffect(() => {
+    console.log("useEffect!");
+    let timer = setTimeout(() => {
+      alert("hello, bad guy");
+    }, 3000);
+    return () => {
+      console.log("Func Comp Unmounted");
+      clearTimeout(timer);
+    };
+  }, []);
+  // boş bağımlılık değişkeni atanırsa sadece ilk renderda çalışır.
+  // dolu verilirse verilen değerlerdeki her değişiklik için tekrar çalışır.
+  // hiç verilmezse her defasında render olur.
+  console.log("Func Comp Rendered!");
 
   const increase = () => setCount(count + 1);
   const increaseAge = () => setAge(age + 1);

@@ -9,11 +9,11 @@ function App() {
   const [isVisible, setIsVisible] = useState(true); //#şarta bağlı render için.
   return (
     <div className="App">
-      {/* <button onClick={() => setIsVisible(!isVisible)}>Toggle Comp</button>
-      {isVisible && <ClassComponent />} */}
+      <button onClick={() => setIsVisible(!isVisible)}>Toggle Comp</button>
+      {/* {isVisible && <ClassComponent />} */}
       {/* koşullu renderdı yukarısı */}
       {/* <UseStateComp /> */}
-      <UseEffectComp />
+      {isVisible && <UseEffectComp />}
     </div>
   );
 }
