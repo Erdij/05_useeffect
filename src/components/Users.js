@@ -4,19 +4,28 @@ import axios from "axios";
 const Users = () => {
   const [users, setUsers] = useState([]);
   console.log(users);
-  const getUsers = () => {
+
+  //ilk renderda bağımlılık değişkeni ile tek sefere mahsus render edildi.
+  useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
       .then((res) => setUsers(res.data))
       .catch((err) => console.log(err));
-  };
+  }, []);
+
+  // const getUsers = () => {
+  //   axios
+  //     .get("https://jsonplaceholder.typicode.com/users")
+  //     .then((res) => setUsers(res.data))
+  //     .catch((err) => console.log(err));
+  // };
 
   return (
     <div className="users">
       <h2>Users</h2>
-      <button onClick={getUsers}>Get Users</button>
+      {/* <button onClick={getUsers}>Get Users</button> */}
       <div className="user-cards">
-        {users.map((user) => (
+        {users?.map((user) => (
           <div className="useritem" key={user.id}>
             <img
               src={`https://avatars.dicebear.com/v2/avataaars/${user.id}.svg`}
