@@ -20,7 +20,7 @@ const UseEffectComp = () => {
       alert("hello, bad guy");
     }, 3000);
     return () => {
-      console.log("Func Comp Unmounted");
+      console.log("Func Comp Unmounted"); //sadece unmounted da çalışmıyor.//sayfa render edilince de çalışıyor return içerisi.
       clearTimeout(timer);
     };
   }, []);
